@@ -1,3 +1,384 @@
-# Header 1
-## Header 2
-### Header 3
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jincheng He — Ph.D. Student</title>
+  <meta name="description" content="Personal website of First Last, Ph.D. student in Computer Science. Research: Software Architecture, Sustainability, and ML for SE." />
+  
+  <!-- Social previews -->
+  <meta property="og:title" content="First Last — Ph.D. Candidate" />
+  <meta property="og:description" content="Research: Software Architecture, Sustainability, and ML for SE." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="/assets/og-card.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  
+  <!-- Schema.org Person JSON-LD (fill in your details) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Jincheng He",
+    "image": "/assets/profile.jpg",
+    "jobTitle": "Ph.D. Student",
+    "affiliation": {"@type": "University", "name": "University of Southern California"},
+    "email": "mailto:jinchenh@usc.edu",
+    "url": "https://jhe-software-researcher.github.io",
+    "sameAs": [
+      "https://scholar.google.com/citations?user=r9JC-7UAAAAJ",
+      "https://orcid.org/0000-0002-3485-662X",
+      "https://github.com/jhe-software-researcher",
+      "https://www.linkedin.com/in/jinchenghe/"
+    ]
+  }
+  </script>
+
+  <style>
+    :root {
+      --bg: #ffffff;
+      --fg: #0f172a; /* slate-900 */
+      --muted: #475569; /* slate-600 */
+      --accent: #2563eb; /* blue-600 */
+      --accent-2: #7c3aed; /* violet-600 */
+      --card: #f8fafc; /* slate-50 */
+      --border: #e2e8f0; /* slate-200 */
+      --shadow: 0 8px 30px rgba(2, 6, 23, 0.08);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0b1220;
+        --fg: #e5e7eb;
+        --muted: #9ca3af;
+        --accent: #60a5fa;
+        --accent-2: #c4b5fd;
+        --card: #0f172a;
+        --border: #1f2937;
+        --shadow: 0 8px 30px rgba(0,0,0,0.35);
+      }
+    }
+
+    * { box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      margin: 0;
+      font: 16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Noto Sans", "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji";
+      background: var(--bg);
+      color: var(--fg);
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; height: auto; display: block; }
+
+    .container { max-width: 980px; margin: 0 auto; padding: 24px; }
+    header {
+      display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: center;
+      padding: 24px; border: 1px solid var(--border); border-radius: 18px; background: var(--card);
+      box-shadow: var(--shadow);
+    }
+    header .headshot { width: 120px; height: 120px; border-radius: 16px; object-fit: cover; border: 1px solid var(--border); }
+    header h1 { margin: 0 0 4px; font-size: 28px; line-height: 1.2; }
+    header p.role { margin: 0; color: var(--muted); }
+    header .links { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 12px; }
+    header .links a { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; background: transparent; }
+
+    nav { position: sticky; top: 0; background: var(--bg); border-bottom: 1px solid var(--border); z-index: 10; }
+    nav .nav-inner { max-width: 980px; margin: 0 auto; padding: 10px 24px; display: flex; gap: 16px; flex-wrap: wrap; align-items: center; }
+    nav a { color: var(--fg); opacity: 0.85; }
+    nav a:hover { opacity: 1; }
+
+    section { margin: 28px 0; padding: 24px; border: 1px solid var(--border); border-radius: 18px; background: var(--card); box-shadow: var(--shadow); }
+    section h2 { margin-top: 0; font-size: 22px; }
+
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    @media (max-width: 800px) { .grid-2 { grid-template-columns: 1fr; } header { grid-template-columns: 1fr; text-align: center; } header .headshot { margin: 0 auto; } }
+
+    .tag { font-size: 12px; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--border); color: var(--muted); }
+    .pill { padding: 6px 10px; border: 1px solid var(--border); border-radius: 999px; }
+    .list { list-style: none; margin: 0; padding: 0; }
+    .list li { padding: 10px 0; border-bottom: 1px dashed var(--border); }
+    .list li:last-child { border-bottom: none; }
+
+    .pub { display: grid; grid-template-columns: 60px 1fr; gap: 14px; }
+    .pub .year { font-weight: 600; color: var(--muted); }
+    .pub .title { font-weight: 600; }
+    .pub .authors { color: var(--muted); }
+    .pub .venue { font-style: italic; color: var(--muted); }
+    .pub .links { margin-top: 6px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+    .cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+    .card { border: 1px solid var(--border); background: var(--bg); border-radius: 16px; padding: 16px; }
+
+    footer { margin: 36px 0 24px; color: var(--muted); text-align: center; }
+
+    /* Print-friendly CV-like rendering */
+    @media print {
+      nav, .links .pill, .pub .links { display: none !important; }
+      body { background: #fff; }
+      section, header { box-shadow: none; }
+      .container { max-width: 100%; padding: 0; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="#about">About</a>
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Projects</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#service">Service</a>
+      <a href="#talks">Talks</a>
+      <a href="#cv">CV</a>
+      <span style="margin-left:auto;font-size:14px;color:var(--muted)">Last updated: <span id="last-updated"></span></span>
+    </div>
+  </nav>
+
+  <main class="container">
+    <!-- Header / Hero -->
+    <header id="about">
+      <img class="headshot" src="/assets/profile.jpg" alt="" />
+      <div>
+        <h1>Jincheng He</h1>
+        <p class="role">Ph.D. Student · Thomas Lord Department of Computer Science · University of Southern California</p>
+        <p>
+          I am a Ph.D. student advised by <a href="#">Prof. Nenad Medvidović</a> in the <a href="#">SoftArch Lab</a>.
+          My research focuses on <strong>software architecture</strong>, <strong>sustainability</strong>, and <strong>Artificial Intelligence for software engineering</strong>.
+        </p>
+        <div class="links">
+          <a class="pill" href="mailto:jinchenh@usc.edu">email</a>
+          <a class="pill" href="https://scholar.google.com/citations?user=r9JC-7UAAAAJ">Google Scholar</a>
+          <a class="pill" href="https://orcid.org/0000-0002-3485-662X">ORCID</a>
+          <a class="pill" href="https://github.com/jhe-software-researcher">GitHub</a>
+          <a class="pill" href="https://www.linkedin.com/in/jinchenghe/">LinkedIn</a>
+          <a class="pill" href="/assets/resume.pdf">CV (PDF)</a>
+        </div>
+      </div>
+    </header>
+
+    <!-- News 
+    <section id="news">
+      <h2>News</h2>
+      <ul class="list" id="news-list">
+        
+        <li><strong>Nov 2025</strong> — Paper accepted to <em>ICSME 2026</em> on software sustainability.</li>
+        <li><strong>Sep 2025</strong> — Presented our preprint at the ABC Workshop.</li>
+        <li><strong>Jun 2025</strong> — Awarded XYZ Fellowship.</li>
+      </ul>
+    </section>
+    -->
+    <!-- Publications -->
+    <section id="publications">
+      <h2>Publications</h2>
+      <div class="grid-2" style="margin-bottom:14px">
+        <!--<div>
+          <label for="pub-search" style="display:block;font-weight:600;margin-bottom:6px">Search publications</label>
+          <input id="pub-search" placeholder="Filter by title, venue, or keyword…" style="width:100%;padding:10px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--fg)" />
+        </div>
+        <div style="display:flex;gap:8px;align-items:end;flex-wrap:wrap">
+          <select id="pub-year" class="pill" style="padding:10px">
+            <option value="">All years</option>
+            <option>2026</option><option>2025</option><option>2024</option><option>2023</option>
+          </select>
+          <select id="pub-type" class="pill" style="padding:10px">
+            <option value="">All types</option>
+            <option value="conf">Conference</option>
+            <option value="journal">Journal</option>
+            <option value="workshop">Workshop</option>
+            <option value="preprint">Preprint</option>
+          </select>
+          <button id="btn-bibtex" class="pill" type="button">Export BibTeX</button>
+        </div>-->
+      </div>
+      <ol class="list" id="pub-list">
+        <!-- Example item (copy to add more) -->
+        <li class="pub" data-year="2020" data-type="conf" data-bibtex="@INPROCEEDINGS{9282759, author={He, Jincheng and Min, Sitao and Ogudu, Kelechi and Shoga, Michael and Polak, Alex and Fostiropoulos, Iordanis and Boehm, Barry and Behnamghader, Pooyan}, booktitle={2020 IEEE 20th International Conference on Software Quality, Reliability and Security (QRS)}, title={The Characteristics and Impact of Uncompilable Code Changes on Software Quality Evolution}, year={2020}, pages={418-429}, doi={10.1109/QRS51102.2020.00061}}">
+          <div class="year">2020</div>
+            <div>
+              <div class="title">The Characteristics and Impact of Uncompilable Code Changes on Software Quality Evolution</div>
+                <div class="authors"><strong>Jincheng He</strong>, Sitao Min, Kelechi Ogudu, Michael Shoga, Alex Polak, Iordanis Fostiropoulos, Barry Boehm, Pooyan Behnamghader</div>
+                <div class="venue">2020 IEEE 20th International Conference on Software Quality, Reliability and Security (QRS)</div>
+                <div class="links">
+                <a href="https://doi.org/10.1109/QRS51102.2020.00061">DOI</a>
+              <a href="#" class="bib">BibTeX</a>
+            </div>
+          </div>
+        </li>
+        <li class="pub" data-year="2025" data-type="preprint" data-bibtex="@misc{he2025purposeorientedstudyopensourcesoftware, title={A Purpose-oriented Study on Open-source Software Commits and Their Impacts on Software Quality}, author={Jincheng He and Zhongheng He}, year={2025}, eprint={2503.02232}, archivePrefix={arXiv}, primaryClass={cs.SE}, url={https://arxiv.org/abs/2503.02232}}">
+          <div class="year">2025</div>
+          <div>
+            <div class="title">A Purpose-oriented Study on Open-source Software Commits and Their Impacts on Software Quality</div>
+            <div class="authors"><strong>Jincheng He</strong>, Zhongheng He</div>
+            <div class="venue">arXiv preprint arXiv:2503.02232</div>
+            <div class="links">
+              <a href="https://arxiv.org/abs/2503.02232">arXiv</a>
+              <a href="#" class="bib">BibTeX</a>
+            </div>
+          </div>
+        </li>
+        <li class="pub" data-year="2025" data-type="preprint" data-bibtex="@unpublished{he2025tsar, title={Tracing Sustainability in ARchitectures (TSAR)}, author={Jincheng He}, note={Manuscript in progress}, year={2025}}">
+          <div class="year">2025</div>
+          <div>
+            <div class="title">Tracing Sustainability in ARchitectures (TSAR)</div>
+            <div class="authors"><strong>Jincheng He</strong></div>
+            <div class="venue">Manuscript in progress</div>
+            <div class="links">
+              <a href="#" class="bib">BibTeX</a>
+            </div>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- Projects 
+    <section id="projects">
+      <h2>Selected Projects</h2>
+      <div class="cards">
+        <article class="card">
+          <h3 style="margin:0 0 6px">TSAR</h3>
+          <p>Tracing Sustainability in ARchitectures: links issues, smells, and version histories across OSS projects.</p>
+          <p><span class="tag">Python</span> <span class="tag">Jupyter</span> <span class="tag">Data</span></p>
+          <p><a href="#">GitHub</a> · <a href="#">Docs</a></p>
+        </article>
+        <article class="card">
+          <h3 style="margin:0 0 6px">RecovAr</h3>
+          <p>Architecture recovery and smell detection pipeline built on ACDC and ARCADE.</p>
+          <p><span class="tag">Java</span> <span class="tag">ACDC</span> <span class="tag">ICSME</span></p>
+          <p><a href="#">GitHub</a></p>
+        </article>
+      </div>
+    </section>
+    -->
+    <!-- Teaching -->
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <ul class="list">
+        <li><strong>CSCI 510 — Software Management and Economics</strong> </li>
+        <li><strong>CSCI 561 — Foundations of AI</strong> </li>
+        <li><strong>CSCI 570 — Analysis of Algorithms</strong> </li>
+        <li><strong>CSCI 585 — Database Systems</strong> </li>
+        <li><strong>CSCI 577A — Software Engineering</strong> </li>
+      </ul>
+    </section>
+
+    <!-- Service
+    <section id="service">
+      <h2>Service</h2>
+      <ul class="list">
+        <li>Program Committee: ICSE 2026 Artifact Evaluation Track</li>
+        <li>Reviewer: JSS, EMSE</li>
+        <li>Mentor: Summer research for HS interns</li>
+      </ul>
+    </section>
+    -->
+    <!-- Talks -->
+    <section id="talks">
+      <h2>Talks</h2>
+      <ul class="list">
+        <li>"Taxonomic Study on Commits and Relationship to Uncompilability" — Boehm Center for Systems and Software Engineering - COCOMO Forum (Nov 2019)</li>
+        <li>"The Characteristics and Impact of Uncompilable Code Changes on Software Quality Evolution" — Boehm Center for Systems and Software Engineering - COCOMO Forum (Sep 2020)</li>
+        <li>"Software Change Analysis from the Perspective of Software Architectural Design Decisions" — Boehm Center for Systems and Software Engineering - Annual Research Review (June 2023)</li>
+      </ul>
+    </section>
+
+    <!-- CV / Contact -->
+    <section id="cv">
+      <h2>CV & Contact</h2>
+      <div class="grid-2">
+        <div>
+          <p>Latest CV: <a href="/assets/resume.pdf">CV_Jincheng_He.pdf</a></p>
+          <p><strong>Office:</strong> Room 503, GCS, USC<br>
+             <strong>Email:</strong> <span id="email"><a class="pill" href="mailto:jinchenh@usc.edu">jinchenh@usc.edu</a></span>
+          </p>
+        </div>
+        <!--<form class="card" action="https://formspree.io/f/your-form-id" method="POST">
+          <h3 style="margin-top:0">Contact form</h3>
+          <label>Name<br><input name="name" required style="width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--fg)"></label><br><br>
+          <label>Email<br><input name="email" type="email" required style="width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--fg)"></label><br><br>
+          <label>Message<br><textarea name="message" rows="4" required style="width:100%;padding:10px;border:1px solid var(--border);border-radius:10px;background:var(--bg);color:var(--fg)"></textarea></label><br><br>
+          <button class="pill" type="submit">Send</button>
+        </form>-->
+      </div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Jincheng He · Built with <a href="https://pages.github.com/">GitHub Pages</a> · Theme: vanilla CSS
+    </footer>
+  </main>
+
+  <!-- Minimal JS for UX niceties 
+  <script>
+    // Show current year and last updated
+    document.getElementById('year').textContent = new Date().getFullYear();
+    document.getElementById('last-updated').textContent = new Date(document.lastModified).toLocaleDateString();
+
+    // Basic email obfuscation
+    (function(){
+      const user = 'firstname.lastname';
+      const host = 'university.edu';
+      const el = document.getElementById('email');
+      el.innerHTML = '<a href="mailto:'+user+'@'+host+'">'+user+'@'+host+'</a>';
+    })();
+
+    // Publications: search, filter, and BibTeX export
+    const q = document.getElementById('pub-search');
+    const fy = document.getElementById('pub-year');
+    const ft = document.getElementById('pub-type');
+    const list = Array.from(document.querySelectorAll('#pub-list > li.pub'));
+
+    function applyFilters(){
+      const text = (q.value || '').toLowerCase();
+      const year = fy.value;
+      const type = ft.value;
+      let any = false;
+      list.forEach(li => {
+        const inText = li.textContent.toLowerCase().includes(text);
+        const inYear = !year || li.dataset.year === year;
+        const inType = !type || li.dataset.type === type;
+        const show = inText && inYear && inType;
+        li.style.display = show ? '' : 'none';
+        any = any || show;
+      });
+      document.getElementById('no-pubs')?.remove();
+      if(!any){
+        const empty = document.createElement('p');
+        empty.id = 'no-pubs';
+        empty.textContent = 'No publications match your filters.';
+        document.getElementById('publications').appendChild(empty);
+      }
+    }
+    q.addEventListener('input', applyFilters);
+    fy.addEventListener('change', applyFilters);
+    ft.addEventListener('change', applyFilters);
+
+    // Inline BibTeX modal (very small)
+    function makeModal(text){
+      const wrap = document.createElement('div');
+      wrap.style.position='fixed';wrap.style.inset='0';wrap.style.background='rgba(0,0,0,.5)';wrap.style.display='grid';wrap.style.placeItems='center';wrap.style.zIndex='9999';
+      const box = document.createElement('pre');
+      box.textContent=text; box.style.maxWidth='90vw'; box.style.maxHeight='70vh'; box.style.overflow='auto'; box.style.padding='16px'; box.style.background='var(--bg)'; box.style.color='var(--fg)'; box.style.border='1px solid var(--border)'; box.style.borderRadius='12px'; box.style.boxShadow='var(--shadow)';
+      wrap.appendChild(box);
+      wrap.addEventListener('click', ()=>wrap.remove());
+      document.body.appendChild(wrap);
+    }
+    document.querySelectorAll('.pub .bib').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const bib = e.target.closest('.pub').dataset.bibtex || '';
+        makeModal(bib);
+      });
+    });
+
+    // Export all visible pubs as BibTeX
+    document.getElementById('btn-bibtex').addEventListener('click', () => {
+      const bibs = list.filter(li => li.style.display !== 'none').map(li => li.dataset.bibtex).filter(Boolean);
+      if (!bibs.length) return alert('No publications to export.');
+      const blob = new Blob([bibs.join('\n\n')], {type:'text/plain'});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url; a.download = 'publications.bib'; a.click();
+      URL.revokeObjectURL(url);
+    });
+  </script>-->
+</body>
+</html>
